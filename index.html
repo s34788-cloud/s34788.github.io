@@ -2,30 +2,123 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>หน้าแนะนำตัวของฉัน</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
-body {
-background-color: #87CEEB; color: #333;
-text-align: center; padding: 50px;
-
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Kanit', sans-serif;
 }
-.card {
-background: white; border-radius: 10px;
-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-max-width: 500px; margin: 0 auto; padding: 30px;
 
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
 }
-h1 { color: #2c3e50; }
-p { font-size: 18px; line-height: 1.6; }
+
+.card{
+    background:rgba(255,255,255,0.95);
+    width:90%;
+    max-width:600px;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    animation:fadeIn 1s ease;
+}
+
+.profile-img{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid #3498db;
+    margin-bottom:20px;
+}
+
+h1{
+    color:#2c3e50;
+    margin-bottom:15px;
+}
+
+p{
+    font-size:18px;
+    color:#555;
+    margin:10px 0;
+    line-height:1.8;
+}
+
+.highlight{
+    color:#3498db;
+    font-weight:bold;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#3498db;
+    color:white;
+    text-decoration:none;
+    border-radius:50px;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.btn:hover{
+    background:#2980b9;
+    transform:translateY(-3px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 </style>
 </head>
+
 <body>
+
 <div class="card">
-<h1>ยินดีต้อนรับสู่โปรไฟล์ของฉัน </h1>
-<p>สวัสดีครับ! ผมชื่อ <strong>ฐาปนา เดชชีวะ(Thapana Datcheewa)</strong></p>
-<p>ขณะนี้กำลังศึกษา/สนใจด้าน Computer Science & Engineering</p>
-<p>นี่คือเว็บไซต์แรกของผมที่โฮสต์บน GitHub Pages!</p>
-<a href="Portfolio.html" style="display:inline-block; background:#3498db; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; margin-top:15px;">👉 ดูแฟ้มสะสมงานของผม</a>
+
+    <!-- เปลี่ยนเป็นรูปของคุณ -->
+    <img src="https://via.placeholder.com/150"
+         alt="Profile"
+         class="profile-img">
+
+    <h1>👋 ยินดีต้อนรับสู่โปรไฟล์ของฉัน</h1>
+
+    <p>
+        สวัสดีครับ! ผมชื่อ
+        <span class="highlight">
+            ฐาปนา เดชชีวะ (Thapana Datcheewa)
+        </span>
+    </p>
+
+    <p>🎓 กำลังศึกษาและสนใจด้าน Computer Science & Engineering</p>
+
+    <p>💻 นี่คือเว็บไซต์แรกของผมที่โฮสต์บน GitHub Pages</p>
+
+    <a href="Portfolio.html" class="btn">
+        🚀 ดูแฟ้มสะสมงานของผม
+    </a>
+
 </div>
+
 </body>
 </html>
