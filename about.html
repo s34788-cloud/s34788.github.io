@@ -1,1 +1,431 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แนะนำตนเอง | PORTFOLIO - ฐาปนา เดชชีวะ</title>
 
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+:root {
+    --primary-red: #D32F2F;
+    --bright-red: #FF2A2A;
+    --accent-orange: #FF5722;
+    --tech-dark: #0F1115;
+    --card-bg: rgba(255, 255, 255, 0.96);
+    --white: #FFFFFF;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: hidden;
+
+    /* Animated Gradient Background */
+    background: linear-gradient(-45deg, #0d0e12, #1f0808, #2b0b0e, #0f1115);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Background Grid Overlay */
+body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(211, 47, 47, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(211, 47, 47, 0.1) 1px, transparent 1px);
+    background-size: 35px 35px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.main-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Header Banner */
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.page-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--bright-red);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+/* Section Card */
+.info-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px 35px;
+    margin-bottom: 25px;
+    border: 2px solid rgba(211, 47, 47, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary-red), var(--accent-orange));
+}
+
+.card-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.card-heading i {
+    color: var(--primary-red);
+}
+
+/* Grid Details */
+.grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.info-item {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.info-item strong {
+    color: #111;
+}
+
+/* Statement of Purpose Styling */
+.sop-text {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.8;
+    text-indent: 20px;
+}
+
+.sop-highlight {
+    background: rgba(211, 47, 47, 0.06);
+    border-left: 4px solid var(--primary-red);
+    padding: 15px 20px;
+    margin-top: 15px;
+    border-radius: 0 12px 12px 0;
+    font-size: 14px;
+    color: #222;
+    font-weight: 500;
+}
+
+/* Skill Tags & Badges */
+.skill-group {
+    margin-bottom: 15px;
+}
+
+.skill-group-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary-red);
+    margin-bottom: 8px;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    background: #f0f2f5;
+    color: #222;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid #ddd;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tag.tech {
+    background: #1e1e24;
+    color: #fff;
+    border: 1px solid rgba(211, 47, 47, 0.5);
+}
+
+.tag.tech i {
+    color: var(--bright-red);
+}
+
+/* Contact Links */
+.contact-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    background: rgba(211, 47, 47, 0.08);
+    border-color: var(--primary-red);
+    color: var(--primary-red);
+}
+
+.contact-item i {
+    font-size: 18px;
+    color: var(--primary-red);
+}
+
+/* Back Button */
+.btn-back-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
+}
+
+/* Responsive view */
+@media (max-width: 600px) {
+    .grid-2col, .contact-list {
+        grid-template-columns: 1fr;
+    }
+    .info-card {
+        padding: 25px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <!-- Header -->
+    <div class="page-header">
+        <div class="page-subtitle">ABOUT ME</div>
+        <h1 class="page-title">แนะนำตนเอง</h1>
+    </div>
+
+    <!-- 1. ข้อมูลส่วนตัว -->
+    <div class="info-card">
+        <div class="card-heading">
+            <i class="fa-solid fa-id-card"></i>
+            <span>ข้อมูลส่วนตัว (Personal Information)</span>
+        </div>
+        <div class="grid-2col">
+            <div class="info-item"><strong>ชื่อ-นามสกุล:</strong> นายฐาปนา เดชชีวะ</div>
+            <div class="info-item"><strong>Name:</strong> Mr. Thapana Datcheewa</div>
+            <div class="info-item"><strong>ชื่อเล่น:</strong> ลัคกี้ (Lucky)</div>
+            <div class="info-item"><strong>วัน/เดือน/ปีเกิด:</strong> 13 ตุลาคม 2551</div>
+            <div class="info-item"><strong>แผนการเรียน:</strong> เตรียมวิศวกรรมศาสตร์ และเทคโนโลยี (CSE)</div>
+            <div class="info-item"><strong>โรงเรียน:</strong> บ้านบึง "อุตสาหกรรมนุเคราะห์"</div>
+        </div>
+    </div>
+
+    <!-- 2. ประวัติการศึกษา -->
+    <div class="info-card">
+        <div class="card-heading">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>ประวัติการศึกษา (Education History)</span>
+        </div>
+        <div class="info-item" style="margin-bottom: 8px;">
+            <strong>ระดับมัธยมศึกษาตอนปลาย (ม.4 - ม.6)</strong>
+        </div>
+        <div class="grid-2col">
+            <div class="info-item">โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"</div>
+            <div class="info-item"><strong>เกรดเฉลี่ยสะสม (GPAX):</strong> 3.20</div>
+        </div>
+    </div>
+
+    <!-- 3. เป้าหมายทางการศึกษา / เหตุผลที่อยากเข้าเรียน -->
+    <div class="info-card">
+        <div class="card-heading">
+            <i class="fa-solid fa-bullseye"></i>
+            <span>เป้าหมายทางการศึกษา (Statement of Purpose)</span>
+        </div>
+        <p class="sop-text">
+            มีความหลงใหลในเทคโนโลยี ระบบฝังตัว (Embedded Systems) และเทคโนโลยีหุ่นยนต์มาโดยตลอด การได้เรียนในแผนการเรียนเตรียมวิศวกรรมศาสตร์และเทคโนโลยี (CSE) ทำให้ได้ฝึกฝนทักษะการแก้ปัญหาเชิงตรรกะ และการทดลองปฏิบัติจริงกับบอร์ดไมโครคอนโทรลเลอร์ ซึ่งเป็นจุดเริ่มต้นสำคัญที่ทำให้อยากศึกษาต่อในสายวิชานี้อย่างลึกซึ้ง
+        </p>
+        <div class="sop-highlight">
+            🎯 <strong>เป้าหมายหลัก:</strong> เข้าศึกษาต่อใน <strong>สาขาวิชาวิทยาการคอมพิวเตอร์ / วิศวกรรมหุ่นยนต์และปัญญาประดิษฐ์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (KMITL)</strong> เพื่อนำความรู้มาพัฒนาต่อยอดสู่การเป็น วิศวกรหุ่นยนต์ (Robotics Engineer) หรือ ผู้พัฒนาระบบฝังตัว (Embedded System Developer) ที่สร้างสรรค์นวัตกรรมใหม่ๆ ให้กับสังคม
+        </div>
+    </div>
+
+    <!-- 4. ทักษะและความสามารถ -->
+    <div class="info-card">
+        <div class="card-heading">
+            <i class="fa-solid fa-gears"></i>
+            <span>ทักษะและความสามารถ (Skills & Competencies)</span>
+        </div>
+        
+        <div class="skill-group">
+            <div class="skill-group-title">💻 Programming Languages</div>
+            <div class="tag-list">
+                <span class="tag tech"><i class="fa-solid fa-code"></i> C++</span>
+                <span class="tag tech"><i class="fa-brands fa-python"></i> Python</span>
+                <span class="tag tech"><i class="fa-brands fa-html5"></i> HTML5 / CSS3</span>
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <div class="skill-group-title">🤖 Hardware & Robotics</div>
+            <div class="tag-list">
+                <span class="tag tech"><i class="fa-solid fa-microchip"></i> ESP32</span>
+                <span class="tag tech"><i class="fa-brands fa-raspberry-pi"></i> Raspberry Pi</span>
+                <span class="tag tech"><i class="fa-solid fa-circuit-board"></i> Arduino</span>
+                <span class="tag tech"><i class="fa-solid fa-robot"></i> ROS 2 (Robot Operating System)</span>
+                <span class="tag tech"><i class="fa-solid fa-dharmachakra"></i> Motor Encoders</span>
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <div class="skill-group-title">🛠️ Software & Tools</div>
+            <div class="tag-list">
+                <span class="tag"><i class="fa-solid fa-laptop-code"></i> VS Code</span>
+                <span class="tag"><i class="fa-brands fa-ubuntu"></i> Ubuntu / Linux</span>
+                <span class="tag"><i class="fa-brands fa-github"></i> Git / GitHub</span>
+            </div>
+        </div>
+
+        <div class="skill-group" style="margin-bottom: 0;">
+            <div class="skill-group-title">🧠 Soft Skills</div>
+            <div class="tag-list">
+                <span class="tag">การทำงานเป็นทีม (Teamwork)</span>
+                <span class="tag">การลุยแก้ Bug / Hardware Troubleshooting</span>
+                <span class="tag">การเรียนรู้เทคโนโลยีใหม่ๆ ด้วยตนเอง (Self-Learning)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ความสนใจพิเศษ -->
+    <div class="info-card">
+        <div class="card-heading">
+            <i class="fa-solid fa-heart"></i>
+            <span>ความสนใจพิเศษ (Special Interests)</span>
+        </div>
+        <div class="tag-list">
+            <span class="tag"><i class="fa-solid fa-robot"></i> การพัฒนาหุ่นยนต์เคลื่อนที่อัตโนมัติ (Mobile Robots / Autonomous System)</span>
+            <span class="tag"><i class="fa-solid fa-microchip"></i> ระบบฝังตัว (Embedded Systems)</span>
+            <span class="tag"><i class="fa-solid fa-bolt"></i> การเขียนโปรแกรมควบคุมมอเตอร์และเซนเซอร์</span>
+        </div>
+    </div>
+
+    <!-- 6. ข้อมูลการติดต่อ -->
+    <div class="info-card">
+        <div class="card-heading">
+            <i class="fa-solid fa-address-book"></i>
+            <span>ข้อมูลการติดต่อ (Contact Information)</span>
+        </div>
+        <div class="contact-list">
+            <a href="tel:017787984" class="contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <span>017-787-984</span>
+            </a>
+            <a href="mailto:thapanadetcheewa@gmail.com" class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <span>thapanadetcheewa@gmail.com</span>
+            </a>
+            <a href="https://instagram.com/n.lucky_08" target="_blank" class="contact-item">
+                <i class="fa-brands fa-instagram"></i>
+                <span>n.lucky_08</span>
+            </a>
+            <div class="contact-item" style="grid-column: span 1;">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>252/1 ม.8 ต.คลองกิ่ว อ.บ้านบึง จ.ชลบุรี</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Back Button -->
+    <div class="btn-back-container">
+        <a href="Portfolio.html" class="btn-back">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>กลับหน้าเมนูหลัก</span>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
