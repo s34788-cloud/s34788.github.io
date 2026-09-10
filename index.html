@@ -129,12 +129,13 @@ body::after {
     line-height: 1.2;
 }
 
-/* Cyber Profile Picture Frame */
+/* Cyber Profile Picture Frame (Fixed Size & Fit) */
 .img-container {
     position: relative;
     width: 160px;
     height: 160px;
     margin: 0 auto 25px auto;
+    border-radius: 50%;
 }
 
 .profile-img {
@@ -142,6 +143,8 @@ body::after {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center;
+    display: block;
     border: 4px solid var(--white);
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
@@ -153,6 +156,7 @@ body::after {
     border-radius: 50%;
     border: 2px dashed var(--primary-red);
     animation: rotate 20s linear infinite;
+    pointer-events: none;
 }
 
 @keyframes rotate {
