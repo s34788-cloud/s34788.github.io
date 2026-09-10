@@ -1,1 +1,403 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รางวัลและการแข่งขัน | PORTFOLIO - ฐาปนา เดชชีวะ</title>
 
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+:root {
+    --primary-red: #D32F2F;
+    --bright-red: #FF2A2A;
+    --accent-orange: #FF5722;
+    --tech-dark: #0F1115;
+    --card-bg: rgba(255, 255, 255, 0.96);
+    --white: #FFFFFF;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: hidden;
+
+    /* Animated Gradient Background */
+    background: linear-gradient(-45deg, #0d0e12, #1f0808, #2b0b0e, #0f1115);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Background Grid Overlay */
+body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(211, 47, 47, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(211, 47, 47, 0.1) 1px, transparent 1px);
+    background-size: 35px 35px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.main-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* Header Banner */
+.page-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.page-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--bright-red);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    margin-top: 5px;
+}
+
+.page-desc {
+    color: #bbb;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* Card Style */
+.cert-card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    overflow: hidden;
+    border: 2px solid rgba(211, 47, 47, 0.3);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cert-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--bright-red);
+    box-shadow: 0 18px 35px rgba(211, 47, 47, 0.3);
+}
+
+.cert-img-wrapper {
+    width: 100%;
+    height: 220px;
+    background: #111;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.cert-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.cert-card:hover .cert-img-wrapper img {
+    transform: scale(1.06);
+}
+
+.cert-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 17, 21, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: var(--white);
+    font-size: 24px;
+}
+
+.cert-img-wrapper:hover .cert-overlay {
+    opacity: 1;
+}
+
+.cert-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.cert-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.cert-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(211, 47, 47, 0.08);
+    color: var(--primary-red);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    width: fit-content;
+}
+
+/* Lightbox Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(255, 42, 42, 0.4);
+}
+
+.modal-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: var(--bright-red);
+}
+
+/* Back Button */
+.btn-back-container {
+    text-align: center;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
+}
+
+@media (max-width: 600px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <!-- Header Banner -->
+    <div class="page-header">
+        <div class="page-subtitle">HONORS & COMPETITIONS</div>
+        <h1 class="page-title">รางวัลและการแข่งขัน</h1>
+        <p class="page-desc">รวบรวมเกียรติบัตร ผลงานการแข่งขันทักษะวิชาการ และงานหัตถกรรมนักเรียน</p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid">
+
+        <!-- 1. เกียรติบัตรการแข่งขัน 1 -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper" onclick="openModal('images/LINE_ALBUM_เกียรติบัตร_260910_1.jpg')">
+                <img src="images/LINE_ALBUM_เกียรติบัตร_260910_1.jpg" alt="เกียรติบัตรการแข่งขัน">
+                <div class="cert-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="cert-body">
+                <h3 class="cert-title">เกียรติบัตรการแข่งขันทักษะวิชาการ</h3>
+                <span class="cert-tag"><i class="fa-solid fa-trophy"></i> Competition Award</span>
+            </div>
+        </div>
+
+        <!-- 2. เกียรติบัตรการแข่งขัน 2 -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper" onclick="openModal('images/LINE_ALBUM_เกียรติบัตร_260910_2.jpg')">
+                <img src="images/LINE_ALBUM_เกียรติบัตร_260910_2.jpg" alt="เกียรติบัตรการแข่งขัน">
+                <div class="cert-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="cert-body">
+                <h3 class="cert-title">เกียรติบัตรการเข้าร่วมและได้รับรางวัลการแข่งขัน</h3>
+                <span class="cert-tag"><i class="fa-solid fa-award"></i> Achievement</span>
+            </div>
+        </div>
+
+        <!-- 3. เกียรติบัตรการแข่งขัน 3 -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper" onclick="openModal('images/LINE_ALBUM_เกียรติบัตร_260910_3.jpg')">
+                <img src="images/LINE_ALBUM_เกียรติบัตร_260910_3.jpg" alt="เกียรติบัตรการแข่งขัน">
+                <div class="cert-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="cert-body">
+                <h3 class="cert-title">เกียรติบัตรผลงานการประกวดทักษะคอมพิวเตอร์</h3>
+                <span class="cert-tag"><i class="fa-solid fa-medal"></i> Academic Award</span>
+            </div>
+        </div>
+
+        <!-- 4. เกียรติบัตรงานศิลปหัตถกรรม 1 -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper" onclick="openModal('images/LINE_ALBUM_เกียรติบัตร_260911_1.jpg')">
+                <img src="images/LINE_ALBUM_เกียรติบัตร_260911_1.jpg" alt="เกียรติบัตรการแข่งขัน">
+                <div class="cert-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="cert-body">
+                <h3 class="cert-title">เกียรติบัตรงานศิลปหัตถกรรมนักเรียน</h3>
+                <span class="cert-tag"><i class="fa-solid fa-star"></i> Certificate</span>
+            </div>
+        </div>
+
+        <!-- 5. เกียรติบัตรงานศิลปหัตถกรรม 2 -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper" onclick="openModal('images/LINE_ALBUM_เกียรติบัตร_260911_2.jpg')">
+                <img src="images/LINE_ALBUM_เกียรติบัตร_260911_2.jpg" alt="เกียรติบัตรการแข่งขัน">
+                <div class="cert-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="cert-body">
+                <h3 class="cert-title">เกียรติบัตรการแข่งขันทักษะระดับจังหวัด/เขตพื้นที่</h3>
+                <span class="cert-tag"><i class="fa-solid fa-trophy"></i> Competition Award</span>
+            </div>
+        </div>
+
+        <!-- 6. ภาพกิจกรรม/เกียรติบัตรเพิ่มเติม -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper" onclick="openModal('images/S__18620421.jpg')">
+                <img src="images/S__18620421.jpg" alt="ภาพกิจกรรมการแข่งขัน">
+                <div class="cert-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="cert-body">
+                <h3 class="cert-title">ภาพบรรยากาศการแข่งขันและรับมอบรางวัล</h3>
+                <span class="cert-tag"><i class="fa-solid fa-camera"></i> Activity Photo</span>
+            </div>
+        </div>
+
+        <!-- 7. เกียรติบัตรคุณฐาปนา (36) -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper" onclick="openModal('images/36 Mr. Thapana Datcheewa.png')">
+                <img src="images/36 Mr. Thapana Datcheewa.png" alt="Mr. Thapana Datcheewa Certificate">
+                <div class="cert-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="cert-body">
+                <h3 class="cert-title">เกียรติบัตรประจำตัว Mr. Thapana Datcheewa</h3>
+                <span class="cert-tag"><i class="fa-solid fa-certificate"></i> Official Certificate</span>
+            </div>
+        </div>
+
+        <!-- 8. เกียรติบัตรคุณฐาปนา (43) -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper" onclick="openModal('images/43 Mr. Thapana Datcheewa.png')">
+                <img src="images/43 Mr. Thapana Datcheewa.png" alt="Mr. Thapana Datcheewa Certificate">
+                <div class="cert-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="cert-body">
+                <h3 class="cert-title">เกียรติบัตรรางวัลการแข่งขัน Mr. Thapana Datcheewa</h3>
+                <span class="cert-tag"><i class="fa-solid fa-award"></i> Competition Award</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ปุ่มย้อนกลับ -->
+    <div class="btn-back-container">
+        <a href="projects.html" class="btn-back">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>กลับหน้าหมวดหมู่ผลงาน</span>
+        </a>
+    </div>
+
+</div>
+
+<!-- Modal สำหรับขยายดูรูปภาพใหญ่ -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="modal-close">&times;</span>
+    <img id="modalImg" src="" alt="Certificate Large View">
+</div>
+
+<script>
+function openModal(imgSrc) {
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("modalImg");
+    modal.style.display = "flex";
+    modalImg.src = imgSrc;
+}
+
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
