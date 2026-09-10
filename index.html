@@ -3,90 +3,263 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>หน้าแนะนำตัวของฉัน</title>
+<title>PORTFOLIO | Thapana Datcheewa - KMITL Target</title>
 
 <!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Kanit', sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
 }
 
-body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#4facfe,#00f2fe);
+:root {
+    --primary-red: #D32F2F;
+    --bright-red: #FF2A2A;
+    --accent-orange: #FF5722;
+    --tech-dark: #0F1115;
+    --card-bg: rgba(255, 255, 255, 0.96);
+    --white: #FFFFFF;
 }
 
-.card{
-    background:rgba(255,255,255,0.95);
-    width:90%;
-    max-width:600px;
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
-    animation:fadeIn 1s ease;
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--tech-dark);
+    /* Tech Grid Background Effect */
+    background-image: 
+        linear-gradient(rgba(211, 47, 47, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(211, 47, 47, 0.08) 1px, transparent 1px);
+    background-size: 30px 30px;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
 }
 
-.profile-img{
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    object-fit:cover;
-    border:5px solid #3498db;
-    margin-bottom:20px;
+/* Background Glowing Elements */
+body::before {
+    content: '';
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(255, 42, 42, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+    top: 10%;
+    left: 10%;
+    z-index: 0;
 }
 
-h1{
-    color:#2c3e50;
-    margin-bottom:15px;
+body::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 87, 34, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    bottom: 10%;
+    right: 10%;
+    z-index: 0;
 }
 
-p{
-    font-size:18px;
-    color:#555;
-    margin:10px 0;
-    line-height:1.8;
+.portfolio-card {
+    position: relative;
+    z-index: 1;
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 650px;
+    padding: 45px 35px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
+                0 0 20px rgba(211, 47, 47, 0.2);
+    border: 2px solid rgba(211, 47, 47, 0.3);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
 }
 
-.highlight{
-    color:#3498db;
-    font-weight:bold;
+/* Red Tech Accent Lines on Card */
+.portfolio-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, var(--primary-red), var(--accent-orange), var(--bright-red));
 }
 
-.btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:12px 25px;
-    background:#3498db;
-    color:white;
-    text-decoration:none;
-    border-radius:50px;
-    transition:0.3s;
-    font-weight:600;
+.kmitl-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(211, 47, 47, 0.08);
+    border: 1px solid var(--primary-red);
+    color: var(--primary-red);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
 }
 
-.btn:hover{
-    background:#2980b9;
-    transform:translateY(-3px);
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+.port-title-container {
+    margin-bottom: 25px;
 }
 
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(30px);
+.port-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--primary-red);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.port-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.2;
+}
+
+/* Cyber Profile Picture Frame */
+.img-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 25px auto;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--white);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.img-container::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2px dashed var(--primary-red);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
+}
+
+.user-name {
+    font-size: 24px;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.user-name-en {
+    font-size: 15px;
+    color: #666;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+/* Tech Tags */
+.tag-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0;
+}
+
+.tech-tag {
+    background: #f0f2f5;
+    color: #333;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    border-left: 3px solid var(--primary-red);
+}
+
+.description {
+    font-size: 15px;
+    color: #555;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.github-host-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+    background: #f8f9fa;
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--primary-red), var(--accent-orange));
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 8px 20px rgba(211, 47, 47, 0.35);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(211, 47, 47, 0.5);
+    background: linear-gradient(135deg, var(--bright-red), var(--accent-orange));
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
     }
-    to{
-        opacity:1;
-        transform:translateY(0);
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .portfolio-card {
+        padding: 30px 20px;
+    }
+    .port-title {
+        font-size: 26px;
+    }
+    .user-name {
+        font-size: 20px;
     }
 }
 </style>
@@ -94,27 +267,53 @@ p{
 
 <body>
 
-<div class="card">
+<div class="portfolio-card">
 
-    <!-- เปลี่ยนเป็นรูปของคุณ -->
-    
+    <!-- KMITL Target Badge -->
+    <div class="kmitl-badge">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>TARGET : สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (KMITL)</span>
+    </div>
 
-    <h1>👋 ยินดีต้อนรับสู่โปรไฟล์ของฉัน</h1>
+    <!-- Cover Header Title -->
+    <div class="port-title-container">
+        <div class="port-subtitle">PORTFOLIO</div>
+        <h1 class="port-title">แฟ้มสะสมผลงาน</h1>
+    </div>
 
-    <p>
-        สวัสดีครับ! ผมชื่อ
-        <span class="highlight">
-            ฐาปนา เดชชีวะ (Thapana Datcheewa)
-        </span>
+    <!-- Profile Picture with Tech Ring -->
+    <div class="img-container">
+        <img src="images/project1.jpg" alt="Thapana Datcheewa" class="profile-img">
+    </div>
+
+    <!-- Student Name -->
+    <h2 class="user-name">ฐาปนา เดชชีวะ</h2>
+    <p class="user-name-en">Thapana Datcheewa</p>
+
+    <!-- Interest Tags -->
+    <div class="tag-container">
+        <span class="tech-tag"><i class="fa-solid fa-code"></i> Computer Science</span>
+        <span class="tech-tag"><i class="fa-solid fa-microchip"></i> Engineering</span>
+        <span class="tech-tag"><i class="fa-solid fa-robot"></i> Robotics</span>
+    </div>
+
+    <p class="description">
+        กำลังศึกษาและมีความมุ่งมั่นตั้งใจเข้าศึกษาต่อในระดับอุดมศึกษาด้านวิทยาการคอมพิวเตอร์และวิศวกรรมศาสตร์
     </p>
 
-    <p>🎓 กำลังศึกษาและสนใจด้าน Computer Science & Engineering</p>
+    <div class="github-host-info">
+        <i class="fa-brands fa-github"></i> Hosted on GitHub Pages
+    </div>
 
-    <p>💻 นี่คือเว็บไซต์แรกของผมที่โฮสต์บน GitHub Pages</p>
+    <br>
 
-    <a href="Portfolio.html" class="btn">
-        🚀 ดูแฟ้มสะสมงานของผม
-    </a>
+    <!-- Navigation Button -->
+    <div class="btn-group">
+        <a href="Portfolio.html" class="btn-primary">
+            <span>เข้าชมแฟ้มสะสมผลงาน</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </div>
 
 </div>
 
